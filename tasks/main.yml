@@ -1,2 +1,8 @@
 ---
 # tasks file for git-archlinux
+- name: Install git
+  pacman: 
+    name: git
+    update_cache: yes
+    state: "{{ git_upgrade | ternary('latest', 'present') }}"
+  become: "{{ git_nonroot }}"

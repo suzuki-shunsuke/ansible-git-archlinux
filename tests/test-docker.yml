@@ -1,0 +1,25 @@
+# test.yml
+# test playbook
+- name: start docker
+  hosts: localhost
+  connection: local
+  vars:
+    base_image: suzukishunsuke/python2:archlinux-0.1.0
+    docker_hostname: test-ansible-git-archlinux
+  tasks:
+    - name: start docker
+      docker_container:
+        image: "{{ base_image }}"
+        name: "{{ docker_hostname }}"
+        detach: yes
+        tty: yes
+        command: bash
+    - name: Add host
+      add_host: name={{ docker_hostname }}
+- name: test with docker
+  hosts: test-ansible-git-archlinux
+  connection: docker
+  vars:
+    ansible_python_interpreter: python2
+  roles:
+    - { role: ansible-git-archlinux }
