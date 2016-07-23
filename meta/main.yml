@@ -1,7 +1,6 @@
 galaxy_info:
-  author: your name
-  description: your description
-  company: your company (optional)
+  author: Suzuki Shunsuke
+  description: Install Git on Arch Linux.
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
